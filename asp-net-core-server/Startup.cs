@@ -77,6 +77,7 @@ namespace AspNetCoreDashboardBackend {
             DataSourceInMemoryStorage dataSourceStorage = new DataSourceInMemoryStorage();
                         
             DashboardJsonDataSource jsonDataSourceSupport = new DashboardJsonDataSource("Support");
+            jsonDataSourceSupport.ConnectionName = "jsonSupport";
             jsonDataSourceSupport.RootElement = "Employee";
             dataSourceStorage.RegisterDataSource("jsonDataSourceSupport", jsonDataSourceSupport.SaveToXml());
 
@@ -84,7 +85,7 @@ namespace AspNetCoreDashboardBackend {
         }
 
         private void Configurator_ConfigureDataConnection(object sender, ConfigureDataConnectionWebEventArgs e) {
-            if (e.DataSourceName.Contains("Support")) {
+            if (e.ConnectionName == "jsonSupport") {
                 Uri fileUri = new Uri(FileProvider.GetFileInfo("App_Data/Support.json").PhysicalPath, UriKind.RelativeOrAbsolute);
                 JsonSourceConnectionParameters jsonParams = new JsonSourceConnectionParameters();
                 jsonParams.JsonSource = new UriJsonSource(fileUri);
