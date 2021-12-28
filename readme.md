@@ -1,20 +1,24 @@
 <!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/440155778/21.2.3%2B)
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T1054393)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-# Dashboard for Angular - How to implement a custom service and UI for managing dashboards list
+# Dashboard for Angular - How to Implement a Custom Service and UI for Managing Dashboards List
 
-This example illustrates a custom implementation of the dashboard list similar to one provided by [Dashboard Panel](https://docs.devexpress.com/Dashboard/119771/web-dashboard/ui-elements-and-customization/ui-elements/dashboard-panel) and [requestDashboardList](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardControl?p=netframework#js_devexpress_dashboard_dashboardcontrol_requestdashboardlist).
+This example shows how to create a custom list of dashboards similar to the [Dashboard Panel](https://docs.devexpress.com/Dashboard/119771/web-dashboard/ui-elements-and-customization/ui-elements/dashboard-panel).
 
-On the server side we use the [DevExtreme ASP.NET Data](https://github.com/DevExpress/DevExtreme.AspNet.Data) package APIs to prepare a list of dashboard names with their ids based on the `Products` table from the `Northwind` database accessed through the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/). This list is returned by the `DashboardPanelController.Dashboards` action method.
-In addition, it is necessary to implement the a custom [Dashboard Storage](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDashboardStorage) and return the corresponding dashboard from the [IDashboardStorage.LoadDashboard](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDashboardStorage.LoadDashboard(System.String)) method. We use a single dashboard XML template (the `DashboardTemplate.xml` file) and only modify the dashboard's title to emulate different dashboards. In your particular usage scenario, you can store dashboard layouts in the database and load them from here (e.g., see [Dashboard for ASP.NET Core - How to load and save dashboards from/to a database](https://github.com/DevExpress-Examples/asp-net-core-dashboard-save-dashboards-to-database)).
+## Server
 
-On the client-side, the [dxList](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxList/) widget is used to load and display the list of dashboards.
+The [DevExtreme ASP.NET Data](https://github.com/DevExpress/DevExtreme.AspNet.Data) package's API is used to prepare a list of dashboard names with their IDs. Identifiers are based on the `Products` table from the `Northwind` database and accessed through the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/). The `DashboardPanelController.Dashboards` action method call returns this list.
 
-**NOTE:** This example uses the `ProductID` database field as a dashboard's Id. The field's type is number while the [DashboardInfo.ID](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardInfo.ID) property and the [IDashboardStorage.LoadDashboard](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDashboardStorage.LoadDashboard(System.String)) method's argument type is string. So, it is necessary to convert types. This is done in the `NorthwindContext.OnModelCreating` method (see [NorthwindContext.cs](./asp-net-core-server/Models/NorthwindContext.cs)).
+You need to implement the custom [dashboard storage](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDashboardStorage) to store dashboards. Call the [IDashboardStorage.LoadDashboard](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDashboardStorage.LoadDashboard(System.String)) method to return the corresponding dashboard from this storage. This example uses a single dashboard XML template (the `DashboardTemplate.xml` file) and only modifies the dashboard's title to emulate different dashboards. In this particular usage scenario, you can store dashboard layouts in the database and load them from here (for example, see [Dashboard for ASP.NET Core - How to load and save dashboards from/to a database](https://github.com/DevExpress-Examples/asp-net-core-dashboard-save-dashboards-to-database)).
 
-<!-- default file list -->
+
+## Client
+
+The [dxList](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxList/) widget is used to load and display the list of dashboards.
+
+> **NOTE:** This example uses the `ProductID` database field as a dashboard's ID. The field's type is `number` while the [DashboardInfo.ID](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardInfo.ID) property and the [IDashboardStorage.LoadDashboard](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDashboardStorage.LoadDashboard(System.String)) method's argument type is `string`. It is necessary to convert types. In this example, this is done in the `NorthwindContext.OnModelCreating` method (see [NorthwindContext.cs](./asp-net-core-server/Models/NorthwindContext.cs)).
+
 ## Files to Look At
 
 * [Startup.cs](./asp-net-core-server/Startup.cs)
@@ -25,8 +29,6 @@ On the client-side, the [dxList](https://js.devexpress.com/Documentation/ApiRefe
 * [app.component.ts](./dashboard-angular-app/src/app/app.component.ts)
 * [app.component.html](./dashboard-angular-app/src/app/app.component.html)
 
-<!-- default file list end -->
-
 ## Quick Start
 
 ### Server
@@ -36,7 +38,7 @@ Run the following command in the **asp-net-core-server** folder:
 dotnet run
 ```
 
-The server starts at `http://localhost:5000` and the client gets data from `http://localhost:5000/api/dashboard`. To debug the server, run the **asp-net-core-server** application in Visual Studio and change the client's `serverUrl` property according to the listening port: `https://localhost:44396/api/dashboard`.
+The server starts at `http://localhost:5000` and the client gets data from `http://localhost:5000/api/dashboard`. To debug the server, run the **asp-net-core-server** application in Visual Studio and change the client's `serverUrl` property according to the listening port: `https://localhost:44396/`.
 
 See the following section for information on how to install NuGet packages from the DevExpress NuGet feed: [Install DevExpress Controls Using NuGet Packages](https://docs.devexpress.com/GeneralInformation/115912/installation/install-devexpress-controls-using-nuget-packages).
 

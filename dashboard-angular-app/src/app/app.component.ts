@@ -9,7 +9,8 @@ import DataSource from 'devextreme/data/data_source';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  serverUrl: string = "https://localhost:44396";
+  serverUrl: string = "http://localhost:5000";
+  /* To debug the server, change 'serverUrl' to https://localhost:44396 and run the server application in Visual Studio. */
   store: CustomStore;
   dataSource: DataSource;
 

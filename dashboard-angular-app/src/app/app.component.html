@@ -1,5 +1,5 @@
-<div style="display: flex; height: 650px">
-  <div style="width: 300px;">
+<div style="display: flex; height: 650px; border: 1px solid #ccc">
+  <div style="width: 250px; border-right: 1px solid #ccc">
     <dx-list
         #list
         [dataSource]="dataSource" 
@@ -11,7 +11,7 @@
         selectionMode="single">
     </dx-list>
   </div>
-  <div style="flex-grow: 1;">
+  <div style="flex-grow: 1">
     <dx-dashboard-control
         style="display: block; width: 100%; height: 100%;" 
         [endpoint]="serverUrl + '/api/dashboard'"
