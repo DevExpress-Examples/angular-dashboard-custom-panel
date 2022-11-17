@@ -22,7 +22,7 @@ The [dxList](https://js.devexpress.com/Documentation/ApiReference/UI_Components/
 
 > **NOTE:** This example uses the `ProductID` database field as a dashboard's ID. The field's type is `number` while the [DashboardInfo.ID](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardInfo.ID) property and the [IDashboardStorage.LoadDashboard](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDashboardStorage.LoadDashboard(System.String)) method's argument type is `string`. It is necessary to convert types. In this example, this is done in the `NorthwindContext.OnModelCreating` method (see [NorthwindContext.cs](./asp-net-core-server/Models/NorthwindContext.cs)).
 
-## Files to Look At
+## Files to Review
 
 * [Startup.cs](./asp-net-core-server/Startup.cs)
 * [DashboardPanelController.cs](./asp-net-core-server/Controllers/DashboardPanelController.cs)
