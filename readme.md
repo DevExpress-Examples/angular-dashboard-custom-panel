@@ -18,9 +18,11 @@ You need to implement the custom [dashboard storage](https://docs.devexpress.com
 
 ## Client
 
-The [dxList](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxList/) widget is used to load and display the list of dashboards.
+The DevExtreme-based [dxList](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxList/) widget is used to load and display the list of dashboards.
 
 > **NOTE:** This example uses the `ProductID` database field as a dashboard's ID. The field's type is `number` while the [DashboardInfo.ID](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardInfo.ID) property and the [IDashboardStorage.LoadDashboard](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDashboardStorage.LoadDashboard(System.String)) method's argument type is `string`. It is necessary to convert types. In this example, this is done in the `NorthwindContext.OnModelCreating` method (see [NorthwindContext.cs](./asp-net-core-server/Models/NorthwindContext.cs)).
+
+> **NOTE:** To additionally customize to the created panel, use the [dxList](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxList/) widget's API. For example, you can enable item dragging using the [dxList.itemDragging.allowReordering](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxSortable/Configuration/#allowReordering) option as illustrated in the following demo: [Item Dragging](https://js.devexpress.com/Demos/WidgetsGallery/Demo/List/ItemDragging/Angular/Light/).
 
 ## Files to Review
 
