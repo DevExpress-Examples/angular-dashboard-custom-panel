@@ -66,6 +66,7 @@ Open ```http://localhost:4200/``` in your browser to see the Web Dashboard appli
 
 - [Dashboard for ASP.NET Core - How to Implement a Custom Service and UI for Managing Dashboards List](https://github.com/DevExpress-Examples/asp-net-core-dashboard-custom-panel)
 - [Dashboard for ASP.NET Core - How to load and save dashboards from/to a database](https://github.com/DevExpress-Examples/asp-net-core-dashboard-save-dashboards-to-database)
+
 <!-- feedback -->
 ## Does This Example Address Your Development Requirements/Objectives?
 
@@ -73,4 +74,5 @@ Open ```http://localhost:4200/``` in your browser to see the Web Dashboard appli
 
 (you will be redirected to DevExpress.com to submit your response)
 <!-- feedback end -->
+
 
